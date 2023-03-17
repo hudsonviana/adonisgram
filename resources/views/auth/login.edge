@@ -7,6 +7,24 @@
     <title>Login</title>
   </head>
   <body>
-    Login
+      <form action="/login" method="post">
+      <div>
+        <label for="email"></label>
+        <input type="text" name="email" id="email" />
+        @if(flashMessages.has('errors.email'))
+          <small>{{ flashMessages.get('errors.email') }}</small>
+        @end
+      </div>
+      <div>
+        <label for="password"></label>
+        <input type="password" name="password" id="password" />
+        @if(flashMessages.has('errors.password'))
+          <small>{{ flashMessages.get('errors.password') }}</small>
+        @end
+      </div>
+      <div>
+        <input type="submit" value="Login" />
+      </div>
+    </form>
   </body>
 </html>

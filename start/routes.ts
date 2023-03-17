@@ -12,4 +12,11 @@ Route.get('/login', async ({ view }) => {
   return view.render('auth/login')
 })
 
-Route.post('/signup', 'SignupController.index')
+Route.group(() => {
+  Route.get('/profile', async ({ view }) => {
+    return view.render('profile')
+  })
+}).middleware('auth')
+
+Route.post('/signup', 'AuthController.signup')
+Route.post('/login', 'AuthController.login')
