@@ -14,7 +14,7 @@
       position: relative;
     }
 
-    body:before {
+    /* body:before {
       content: '';
       background: #5A45FF;
       top: 0;
@@ -27,7 +27,7 @@
     * {
       margin: 0;
       padding: 0;
-    }
+    } */
 
     a {
       color: #5A45FF;
@@ -40,7 +40,7 @@
       height: 100vh;
       padding: 0 30px;
       align-items: center;
-      display: flex;
+      /* display: flex; */
       justify-content: center;
     }
 
@@ -84,26 +84,14 @@
 </head>
 <body>
   <main>
-    <div>
-      <h1 class="title"> It Works! </h1>
-      <p class="subtitle">
-        Congratulations, you have just created your first AdonisJS app.
-      </p>
-
-      <ul>
-        <li>
-          The route for this page is defined inside <code>start/routes.ts</code> file
-        </li>
-
-        <li>
-          You can update this page by editing <code>resources/views/welcome.edge</code> file
-        </li>
-
-        <li>
-          If you run into problems, you can reach us on <a href="https://discord.gg/vDcEjq6?">Discord</a> or the <a href="https://forum.adonisjs.com/">Forum</a>.
-        </li>
-      </ul>
-    </div>
+    @if(auth.isAuthenticated)
+      <h1>{{ auth.user.name }}</h1>
+      <form action="/logout" method="post">
+        <button type="submit">Sigh out</button>
+      </form>
+    @else
+      <a href="/login">Login</a>
+    @end
   </main>
 </body>
 </html>

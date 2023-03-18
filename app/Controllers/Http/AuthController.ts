@@ -49,4 +49,9 @@ export default class AuthController {
       return response.badRequest('Credenciais inválidas.')
     }
   }
+
+  public async logout({ auth, response }: HttpContextContract) {
+    await auth.logout()
+    return response.redirect('/')
+  }
 }
