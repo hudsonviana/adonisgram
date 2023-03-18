@@ -1,48 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Signup</title>
-  </head>
-  <body>
-    <form action="/signup" method="post">
-      <div>
-        <label for="name"></label>
-        <input type="text" name="name" id="name" />
-        @if(flashMessages.has('errors.name'))
-          <small>{{ flashMessages.get('errors.name') }}</small>
-        @end
-      </div>
-      <div>
-        <label for="email"></label>
-        <input type="email" name="email" id="email" />
-        @if(flashMessages.has('errors.email'))
-          <small>{{ flashMessages.get('errors.email') }}</small>
-        @end
-      </div>
-      <div>
-        <label for="password"></label>
-        <input type="password" name="password" id="password" />
-        @if(flashMessages.has('errors.password'))
-          <small>{{ flashMessages.get('errors.password') }}</small>
-        @end
-      </div>
-      <div>
-        <label for="password_confirmation"></label>
-        <input
-          type="password"
-          name="password_confirmation"
-          id="password_confirmation"
-        />
-        @if(flashMessages.has('errors.password_confirmation'))
-          <small>{{ flashMessages.get('errors.password_confirmation') }}</small>
-        @end
-      </div>
-      <div>
-        <input type="submit" value="Sign Up" />
-      </div>
-    </form>
-  </body>
-</html>
+@layout('layouts/app')
+@set('title', 'AdonisJS - Signup')
+
+@section('content')
+  <section class="flex justify-center py-10">
+    <article>
+      <h1>Adonisgram</h1>
+      <h2>Signup to see photos and videos from your friends.</h2>
+      <button>Login with Facebook</button>
+      <p>-----OR-----</p>
+      <form action="/signup" method="post">
+        <div>
+          <label for="name"></label>
+          <input type="text" name="name" id="name" />
+          @if(flashMessages.has('errors.name'))
+            <small>{{ flashMessages.get('errors.name') }}</small>
+          @end
+        </div>
+        <div>
+          <label for="email"></label>
+          <input type="email" name="email" id="email" />
+          @if(flashMessages.has('errors.email'))
+            <small>{{ flashMessages.get('errors.email') }}</small>
+          @end
+        </div>
+        <div>
+          <label for="password"></label>
+          <input type="password" name="password" id="password" />
+          @if(flashMessages.has('errors.password'))
+            <small>{{ flashMessages.get('errors.password') }}</small>
+          @end
+        </div>
+        <div>
+          <label for="password_confirmation"></label>
+          <input
+            type="password"
+            name="password_confirmation"
+            id="password_confirmation"
+          />
+          @if(flashMessages.has('errors.password_confirmation'))
+            <small>{{ flashMessages.get('errors.password_confirmation') }}</small>
+          @end
+        </div>
+        <div>
+          <input type="submit" value="Sign Up" />
+        </div>
+      </form>
+      <p>By signup, you agree to our terms, data policy and cookies policy.</p>
+    </article>
+    <article>
+      Have an account? <a href="/login">Log in</a>
+    </article>
+  </section>
+@end
