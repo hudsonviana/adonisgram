@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('name')
       table.string('email')
+      table.dateTime('email_verified_at').nullable()
       table.string('password')
       table.timestamps(true, true)
       // table.timestamp('created_at', { useTz: true })
