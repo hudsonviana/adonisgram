@@ -3,16 +3,34 @@ import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import User from 'App/Models/User'
 
 export default class AuthController {
-  public async signup({ request, response }: HttpContextContract) {
+  public async signup({ request, response, session }: HttpContextContract) {
     const req = await request.validate({
       schema: schema.create({
-        name: schema.string(),
-        email: schema.string({}, [rules.email()]),
-        password: schema.string({}, [rules.confirmed()]),
+        name: schema.string([
+          rules.regex(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s´`^~]+$/),
+          rules.maxLength(50),
+          rules.trim(),
+        ]),
+        email: schema.string({}, [
+          rules.email(),
+          rules.unique({ table: 'users', column: 'email' }),
+          rules.maxLength(50),
+        ]),
+        password: schema.string({}, [
+          rules.confirmed(),
+          rules.minLength(6),
+          rules.maxLength(15),
+        ]),
+        password_confirmation: schema.string(),
       }),
       messages: {
+        email: 'Email inválido.',
         required: 'O campo {{ field }} é obrigatório.',
-        'email.unique': 'Email não disponível.',
+        minLength: 'Necessário pelo menos {{ options.minLength }} caracteres.',
+        maxLength: 'Permitido no máximo {{ options.maxLength }} caracteres.',
+        confirmed: 'As senhas digitadas não são iguais.',
+        'email.unique': 'Email já cadastrado.',
+        'name.regex': 'Inseridos caracteres inválidos para um nome.',
       },
     })
 
@@ -22,7 +40,7 @@ export default class AuthController {
     user.password = req.password
     await user.save()
 
-    user?.sendVerificationEmail()
+    user?.sendVerificationEmail(session)
     return response.redirect('/')
   }
 
@@ -45,7 +63,6 @@ export default class AuthController {
     try {
       await auth.use('web').attempt(email, password)
       response.redirect('/profile')
-      // return { status: 'usuário logado' }
     } catch (error) {
       return response.badRequest('Credenciais inválidas.')
     }

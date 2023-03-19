@@ -4,11 +4,14 @@
 @section('content')
   <section>
     Perfil do usuário <br>
-    {{ auth.user.name }}
+    {{ auth.user.name }} <br>
     {{ auth.user.email }}
 
-    <form action="/verify-email" method="post">
-      <input type="submit" value="Resend">
-    </form>    
+    @if(auth.user.email_verified_at === null)
+      <form action="/verify-email" method="post">
+        <input type="submit" value="Resend">
+      </form>    
+    @end
+
   </section>
 @end
