@@ -16,6 +16,7 @@ Route.get('/profile', async ({ view }) => {
   return view.render('profile')
 }).middleware('auth')
 
+Route.post('/verify-email', 'EmailVerifiesController.index').middleware('auth')
 Route.post('/signup', 'AuthController.signup')
 Route.post('/login', 'AuthController.login')
 Route.post('/logout', 'AuthController.logout')

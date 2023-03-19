@@ -4,9 +4,11 @@
 @section('content')
   <section>
     Perfil do usuário <br>
-    {{ auth.isLoggedIn }}
-    {{ auth.isAuthenticated }} <br>
     {{ auth.user.name }}
     {{ auth.user.email }}
+
+    <form action="/verify-email" method="post">
+      <input type="submit" value="Resend">
+    </form>    
   </section>
 @end
