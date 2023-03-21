@@ -6,11 +6,11 @@ Route.get('/', async ({ view }) => {
 
 Route.get('/signup', async ({ view }) => {
   return view.render('auth/signup')
-})
+}).middleware('guest')
 
 Route.get('/login', async ({ view }) => {
   return view.render('auth/login')
-})
+}).middleware('guest')
 
 Route.get('/profile', async ({ view }) => {
   return view.render('profile')
