@@ -16,19 +16,14 @@ export default class AuthController {
           rules.unique({ table: 'users', column: 'email' }),
           rules.maxLength(50),
         ]),
-        password: schema.string({}, [
-          rules.confirmed(),
-          rules.minLength(6),
-          rules.maxLength(15),
-        ]),
-        password_confirmation: schema.string(),
+        username: schema.string({}, [rules.maxLength(25)]),
+        password: schema.string({}, [rules.minLength(6), rules.maxLength(15)]),
       }),
       messages: {
         email: 'Email inválido.',
         required: 'O campo {{ field }} é obrigatório.',
         minLength: 'Necessário pelo menos {{ options.minLength }} caracteres.',
         maxLength: 'Permitido no máximo {{ options.maxLength }} caracteres.',
-        confirmed: 'As senhas digitadas não são iguais.',
         'email.unique': 'Email já cadastrado.',
         'name.regex': 'Inseridos caracteres inválidos para um nome.',
       },
@@ -37,6 +32,7 @@ export default class AuthController {
     const user = new User()
     user.name = req.name
     user.email = req.email
+    user.username = req.username
     user.password = req.password
     await user.save()
 

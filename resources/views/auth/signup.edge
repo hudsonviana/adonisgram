@@ -24,7 +24,7 @@
               placeholder="Full name" 
             />
             @if(flashMessages.has('errors.name'))
-              <small>{{ flashMessages.get('errors.name') }}</small>
+              <small class="text-xs text-red-600">{{ flashMessages.get('errors.name') }}</small>
             @end
           </div>
           <div>
@@ -36,9 +36,23 @@
               class="w-full bg-gray-100 text-xs rounded-sm px-2 py-2 border my-1 placeholder-gray-600" placeholder="Email" 
             />
             @if(flashMessages.has('errors.email'))
-              <small>{{ flashMessages.get('errors.email') }}</small>
+              <small class="text-xs text-red-600">{{ flashMessages.get('errors.email') }}</small>
             @end
           </div>
+
+          <div>
+            <label for="username"></label>
+            <input 
+              type="text" 
+              name="username" 
+              id="username" 
+              class="w-full bg-gray-100 text-xs rounded-sm px-2 py-2 border my-1 placeholder-gray-600" placeholder="Username" 
+              />
+            @if(flashMessages.has('errors.username'))
+              <small class="text-xs text-red-600">{{ flashMessages.get('errors.username') }}</small>
+            @end
+          </div>
+          
           <div>
             <label for="password"></label>
             <input 
@@ -48,22 +62,10 @@
               class="w-full bg-gray-100 text-xs rounded-sm px-2 py-2 border my-1 placeholder-gray-600" placeholder="Password" 
               />
             @if(flashMessages.has('errors.password'))
-              <small>{{ flashMessages.get('errors.password') }}</small>
+              <small class="text-xs text-red-600">{{ flashMessages.get('errors.password') }}</small>
             @end
           </div>
-          <div>
-            <label for="password_confirmation"></label>
-            <input
-              type="password"
-              name="password_confirmation"
-              id="password_confirmation" 
-              class="w-full bg-gray-100 text-xs rounded-sm px-2 py-2 border my-1 placeholder-gray-600"
-              placeholder="Confirm Password"
-            />
-            @if(flashMessages.has('errors.password_confirmation'))
-              <small>{{ flashMessages.get('errors.password_confirmation') }}</small>
-            @end
-          </div>
+
           <div class="mt-3">
             <input type="submit" value="Sign Up" 
               class="w-full bg-blue-500 text-white rounded px-2 py-1 border my-1"
