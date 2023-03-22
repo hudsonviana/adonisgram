@@ -16,7 +16,11 @@ export default class AuthController {
           rules.unique({ table: 'users', column: 'email' }),
           rules.maxLength(50),
         ]),
-        username: schema.string({}, [rules.maxLength(25)]),
+        username: schema.string({}, [
+          rules.maxLength(25),
+          rules.regex(/^[a-zA-Z0-9._]+$/),
+          rules.trim(),
+        ]),
         password: schema.string({}, [rules.minLength(6), rules.maxLength(15)]),
       }),
       messages: {
@@ -26,6 +30,7 @@ export default class AuthController {
         maxLength: 'Permitido no máximo {{ options.maxLength }} caracteres.',
         'email.unique': 'Email já cadastrado.',
         'name.regex': 'Inseridos caracteres inválidos para um nome.',
+        'username.regex': 'Inseridos caracteres inválidos.',
       },
     })
 
@@ -57,8 +62,8 @@ export default class AuthController {
     const password = req.password
 
     try {
-      await auth.use('web').attempt(email, password)
-      response.redirect('/profile')
+      const user = await auth.use('web').attempt(email, password)
+      response.redirect(`/${user.username}`)
     } catch (error) {
       return response.badRequest('Credenciais inválidas.')
     }

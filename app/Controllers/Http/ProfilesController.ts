@@ -10,4 +10,10 @@ export default class ProfilesController {
     }
     return view.render('profile')
   }
+
+  public async edit({ view }: HttpContextContract) {
+    return view.render('accounts/edit')
+  }
+
+  
 }
