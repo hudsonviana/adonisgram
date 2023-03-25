@@ -17,7 +17,9 @@
         <a href="/">Adonisgram</a>
       </h1>
       <div>
-        <img src="{{ auth.user.avatar }}" alt="profile" class="h-8 w-8 rounded-full border">
+        @if(auth.isAuthenticated)
+          <img src="{{ auth.user.avatar }}" alt="profile" class="h-8 w-8 rounded-full border">
+        @end
       </div>
     </div>
   </nav>

@@ -17,7 +17,7 @@ export default class ProfilesController {
   }
 
   public async update({ auth, request, response }: HttpContextContract) {
-    const user = auth.user
+    const user = auth.user!
     const avatar = request.file('avatar')
 
     if (avatar) {
@@ -27,10 +27,9 @@ export default class ProfilesController {
       })
       user.avatar = `images/${imageName}`
     }
-
     user.details = request.input('details')
 
-    await user?.save()
+    await user.save()
     return response.redirect(`/${user.username}`)
   }
 }
