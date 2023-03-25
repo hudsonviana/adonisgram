@@ -13,7 +13,7 @@ export default class EmailVerifiesController {
       const user = await User.findByOrFail('email', params.email)
       user.email_verified_at = DateTime.local()
       await user.save()
-      response.redirect('/profile')
+      response.redirect(`/${user.username}`)
     } else {
       return 'Token inválido'
     }
