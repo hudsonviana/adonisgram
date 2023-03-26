@@ -18,14 +18,16 @@
       </h1>
 
       @if(auth.isAuthenticated && auth.user.email_verified_at === null)
-      <form action="/verify-email" method="post">
-        <input type="submit" value="Resend" class="px-2 py-1 rounded border" />
-      </form>
+        <form action="/verify-email" method="post">
+          <input type="submit" value="Resend" class="px-2 py-1 rounded border" />
+        </form>
       @end
 
       <div>
         @if(auth.isAuthenticated)
-          <img src="{{ auth.user.avatar }}" alt="profile" class="h-8 w-8 rounded-full border">
+          <a href="{{ env('APP_URL') }}/{{ auth.user.username }}">
+            <img src="{{ env('APP_URL') }}/{{ auth.user.avatar }}" alt="profile" class="h-8 w-8 rounded-full border">
+          </a>
         @end
       </div>
     </div>
