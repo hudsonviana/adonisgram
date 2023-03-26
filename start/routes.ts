@@ -1,8 +1,6 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
-})
+Route.get('/', 'HomeController.index')
 
 Route.get('/signup', async ({ view }) => {
   return view.render('auth/signup')
