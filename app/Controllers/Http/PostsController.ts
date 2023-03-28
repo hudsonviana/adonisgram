@@ -40,5 +40,5 @@ export default class PostsController {
     return response.redirect(`/${user.username}`)
   }
 
-  public async xxx({}: HttpContextContract) {}
+  // public async xxx({}: HttpContextContract) {}
 }

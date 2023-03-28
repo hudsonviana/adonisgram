@@ -14,6 +14,16 @@
         <a href="/accounts/edit" class="border border-gray-400 mx-4 rounded px-2 pt-1 font-semibold">
           Edit Profile
         </a>
+      @else
+        @if(auth.user.followings.map(f => f.followingId).includes(user.id))
+          <form action="{{ `/follow/${user.id}` }}" method="POST">
+            <button type="submit" class="text-white text-sm mt-1 mx-4 rounded px-2 p-1 font-semibold" style="background-color: rgb(211, 58, 66); display: flex; justify-content: space-between; align-items: center;">Unfollow</button>
+          </form>
+        @else
+          <form action="{{ `/follow/${user.id}` }}" method="POST">
+            <button type="submit" class="text-white text-sm mt-1 mx-4 rounded px-2 p-1 font-semibold" style="background-color: rgb(58, 150, 211); display: flex; justify-content: space-between; align-items: center;">Follow</button>
+          </form>
+        @end
       @end
     </div>
 

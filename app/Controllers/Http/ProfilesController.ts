@@ -4,7 +4,7 @@ import User from 'App/Models/User'
 // import { UserFactory } from 'Database/factories'
 
 export default class ProfilesController {
-  public async index({ view, params }: HttpContextContract) {
+  public async index({ view, params, auth }: HttpContextContract) {
     const username = params.username
     const user = await User.findBy('username', username)
 
@@ -15,6 +15,7 @@ export default class ProfilesController {
     }
 
     await user.load('posts')
+    await auth.user?.load('followings')
     return view.render('profile', { user })
   }
 

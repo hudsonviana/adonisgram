@@ -1,0 +1,21 @@
+[33m60840fd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m 21 AdonisJS crash course (Build Instagram Clone) - preload relationship to show post
+[33m76bf032[m 20 AdonisJS crash course (Build Instagram Clone) - using model factory
+[33md32549d[m 19 AdonisJS crash course (Build Instagram Clone) - has many relationship
+[33m27fcdbc[m 18 AdonisJS crash course (Build Instagram Clone) - upload new post
+[33m4af59f8[m 17 AdonisJS crash course (Build Instagram Clone) - file uploading
+[33mdea3aa6[m 16 AdonisJS crash course (Build Instagram Clone) - edit profile page
+[33m595ba9c[m 15 AdonisJS crash course (Build Instagram Clone) - add username
+[33m920230a[m 14 AdonisJS crash course (Build Instagram Clone) - custom guest middleware
+[33m2522ff9[m 13 AdonisJS crash course (Build Instagram Clone) - using signed url
+[33m06dc8c4[m 12 AdonisJS crash course (Build Instagram Clone) - verify email
+[33m96ca496[m 11 AdonisJS crash course (Build Instagram Clone) - refactoring
+[33m3ebd9dd[m 10 AdonisJS crash course (Build Instagram Clone) - send email
+[33m3e07690[m 9 AdonisJS crash course (Build Instagram Clone) - design signup page
+[33m99f00eb[m 8 AdonisJS crash course (Build Instagram Clone) - layouts
+[33ma5a210d[m 7 AdonisJS crash course (Build Instagram Clone) - silent middleware
+[33mc8cfd94[m 6 AdonisJS crash course (Build Instagram Clone) - authenticate user
+[33m457369d[m 5 AdonisJS crash course (Build Instagram Clone) - Store user to database
+[33mc625440[m 4 AdonisJS crash course (Build Instagram Clone) - Database and Migrations
+[33mc7d3cbb[m 3 AdonisJS crash course (Build Instagram Clone) - Validation Rules
+[33m089622b[m 2 AdonisJS crash course (Build Instagram Clone) - Controller and request
+[33m3332e95[m first commit - 1 AdonisJS crash course (Build Instagram Clone) - Intro To Adonis
