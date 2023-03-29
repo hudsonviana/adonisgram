@@ -15,6 +15,7 @@ export default class ProfilesController {
     }
 
     await user.load('posts')
+    await user?.load('followings')
     await auth.user?.load('followings')
     const followers = await auth.user?.followers()
 
